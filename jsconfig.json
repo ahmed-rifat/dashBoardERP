@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/auth/signin/page.jsx", "src/app/calendar/page.jsx", "src/app/charts/basic-chart/page.jsx", "src/app/forms/form-elements/page.jsx", "src/app/forms/form-layout/page.jsx", "src/app/pages/settings/page.jsx", "src/app/profile/page.jsx", "src/app/tables/page.jsx", "src/app/ui-elements/alerts/page.jsx", "src/app/ui-elements/buttons/page.jsx", "src/app/layout.jsx", "src/app/page.jsx", "src/components/Alerts/AlertError.jsx", "src/components/Alerts/AlertSuccess.jsx", "src/components/Alerts/AlertWarning.jsx", "src/components/Auth/Signin/index.jsx", "src/components/Auth/GoogleSigninButton.jsx", "src/components/Auth/SigninWithPassword.jsx", "src/components/Breadcrumbs/Breadcrumb.jsx", "src/components/Buttons/ButtonDefault.jsx", "src/components/CalenderBox/index.jsx", "src/components/Charts/BasicChart.jsx", "src/components/Charts/ChartFive.jsx", "src/components/Charts/ChartOne.jsx", "src/components/Charts/ChartThree.jsx", "src/components/Charts/ChartTwo.jsx", "src/components/Chat/ChatCard.jsx", "src/components/CheckMarks/CheckMark.jsx", "src/components/CloseMarks/CloseMark.jsx", "src/components/common/Loader/index.jsx", "src/components/Dashboard/E-commerce.jsx", "src/components/DataStats/DataStatsOne.jsx", "src/components/Dropdowns/DropdownDefault.jsx", "src/components/Dropdowns/DropdownDefaultTwo.jsx", "src/components/FormElements/Checkboxes/CheckboxFive.jsx", "src/components/FormElements/Checkboxes/CheckboxFour.jsx", "src/components/FormElements/Checkboxes/CheckboxOne.jsx", "src/components/FormElements/Checkboxes/CheckboxThree.jsx", "src/components/FormElements/Checkboxes/CheckboxTwo.jsx", "src/components/FormElements/DatePicker/DatePickerOne.jsx", "src/components/FormElements/DatePicker/DatePickerTwo.jsx", "src/components/FormElements/InputGroup/index.jsx", "src/components/FormElements/SelectGroup/SelectGroupOne.jsx", "src/components/FormElements/SelectGroup/SelectGroupThree.jsx", "src/components/FormElements/SelectGroup/SelectGroupTwo.jsx", "src/components/FormElements/Switchers/SwitcherFour.jsx", "src/components/FormElements/Switchers/SwitcherOne.jsx", "src/components/FormElements/Switchers/SwitcherThree.jsx", "src/components/FormElements/Switchers/SwitcherTwo.jsx", "src/components/FormElements/index.jsx", "src/components/FormElements/MultiSelect.jsx", "src/components/Header/DarkModeSwitcher.jsx", "src/components/Header/DropdownNotification.jsx", "src/components/Header/DropdownUser.jsx", "src/components/Header/index.jsx", "src/components/Layouts/DefaultLaout.jsx", "src/components/Header/SearchForm.jsx", "src/components/Maps/MapOne.jsx", "src/components/ProfileBox/index.jsx", "src/components/SelectOption/DefaultSelectOption.jsx", "src/components/SettingBoxes/index.jsx", "src/components/Sidebar/SidebarDropdown.jsx", "src/components/Sidebar/SidebarItem.jsx", "src/components/ClickOutside.jsx", "src/components/Star.jsx", "src/hooks/useColorMode.jsx", "src/hooks/useLocalStorage.jsx", "tailwind.config.js"],
+  "exclude": ["node_modules"]
+}
