@@ -1,6 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/calendar/page": "app/calendar/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/ui-elements/alerts/page": "app/ui-elements/alerts/page.js"
-}
