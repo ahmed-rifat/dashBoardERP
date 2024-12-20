@@ -1,8 +1,7 @@
-import { ApexOptions } from "apexcharts";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const ChartFive: React.FC = () => {
+const ChartFive = () => {
   const series = [
     {
       name: "Visitors",
@@ -10,7 +9,7 @@ const ChartFive: React.FC = () => {
     },
   ];
 
-  const options: ApexOptions = {
+  const options = {
     colors: ["#5750F1"],
     chart: {
       fontFamily: "Satoshi, sans-serif",

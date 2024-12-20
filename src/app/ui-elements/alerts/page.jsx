@@ -1,11 +1,10 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import AlertError from "@/components/Alerts/AlertError";
 import AlertWarning from "@/components/Alerts/AlertWarning";
 import AlertSuccess from "@/components/Alerts/AlertSuccess";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Next.js Alerts Page | NextAdmin - Next.js Dashboard Kit",
   description: "This is Next.js Alerts page for NextAdmin Dashboard Kit",
   // other metadata
