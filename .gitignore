@@ -17,3 +17,7 @@
 .next/cache/webpack/client-development/index.pack.gz.old
 .next/cache/webpack/server-development/0.pack.gz
 .next/cache/webpack/server-development/index.pack.gz
+# Ignore Next.js build output
+.next/
+# Ignore static chunk files from Next.js build
+.next/static/chunks/
