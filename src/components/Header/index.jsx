@@ -57,7 +57,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
             <Image
               width={32}
               height={32}
-              src={"/public/images/favicon.png"}
+              src={"/images/favicon.png"}
               alt="Logo"
             />
           </Link>
