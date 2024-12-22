@@ -1,23 +1,20 @@
-
-# dependencies
-/node_modules
-*.json
-.next/cache/images/axTuOgFdNKqqK-Un8BKnZU9zhDvk4ZqvuDUiQyFz3fk/60.1734679516410.9cQH3jRNe_clo8lT-GTPVi0ATo3CbyCEsMZAnag54Vg.Vy8iN2Y5NC0xOTNlMmFhZjFkMyI.webp
-.next/cache/images/axTuOgFdNKqqK-Un8BKnZU9zhDvk4ZqvuDUiQyFz3fk/60.1734681203267.9cQH3jRNe_clo8lT-GTPVi0ATo3CbyCEsMZAnag54Vg.Vy8iN2Y5NC0xOTNlMmZiNGNmMyI.webp
-.next/cache/images/DNDFUNy5ov-EXTqL1-WmQYyCpeKNMtqyAAwTRpLcmIA/60.1734681203282.-Cjs8WFgSdehv9bu5p1veV3_lAfdepqeZagbr_HtY-w.Vy8iNGEyZi0xOTNlMmZiNGNmMyI.webp
-.next/cache/images/eKRU_XHKRdsznqFaOgaA8toA1xgKcQlkAqU0naZNnUk/60.1734681203256.Q1lbe8CBTKljF2zl8hUuKlyTDxfcqIsSzDt5nSPowO8.Vy8iYjM2Ni0xOTNlMmZiNGNkNCI.webp
-.next/cache/images/H6g73p2S3zTs36_fMdjkw4R4pVg9UwfYq4hpWzUeiis/60.1734681203277.hJO0TIjMmUHIo5U2SX0onlpOG3wAtAut99YbYCgvKAY.Vy8iNGM1OS0xOTNlMmZiNGNmMyI.webp
-.next/cache/images/lHdWMVZVaGv0sNpzVdZ4RBphYIA4Efjq2cRrptO9s0U/60.1734681203256.9W9vGZr-SlvFzcX16uuTarTUo8Ye76I3Jhi4-1nJtFs.Vy8iMTgyOC0xOTNlMmZiNGNlMyI.webp
-.next/cache/images/nGeHbud2SrniWYCjzA8vl5xHPkSZ4j4adLkNHgzUmX4/60.1734681203276.hp1ai-2TvXQNQkbe9tf-yDf5zJvevM1-cc0oJF7cYuo.Vy8iNWI4Yy0xOTNlMmZiNGNmMyI.webp
-.next/cache/images/W1839q5GgLoiC7W-cgXhGHK3aZ38xZxwKzvFIUfptpQ/60.1734681203278.PdJK2v24Z3gChlSvQTBWJmKKfGqI-mXcORq0Vk0nvT4.Vy8iNGM0Ny0xOTNlMmZiNGNmMyI.webp
-.next/cache/images/Wqad6cAZ0lqszZRT6wCX3piGUpr7qVD2g1EKxIIkKXY/60.1734681203278.RdGKQ7D6ammHMKvPrZnAozndIQ-wGcR51AowCO8DwpE.Vy8iNTM2Yy0xOTNlMmZiNGNmMyI.webp
-.next/cache/webpack/client-development/0.pack.gz
-.next/cache/webpack/client-development/1.pack.gz
-.next/cache/webpack/client-development/index.pack.gz
-.next/cache/webpack/client-development/index.pack.gz.old
-.next/cache/webpack/server-development/0.pack.gz
-.next/cache/webpack/server-development/index.pack.gz
 # Ignore Next.js build output
 .next/
-# Ignore static chunk files from Next.js build
+
+# Ignore node_modules
+node_modules/
+
+# Ignore log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# If you have other specific generated files, you can add them here
 .next/static/chunks/
+
