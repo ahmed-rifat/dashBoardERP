@@ -151,7 +151,7 @@ export default function SigninWithPassword() {
         </div>
       </div>
 
-      <div>
+      <div className="mb-5">
         <label
           htmlFor="confirm-password"
           className="mb-2.5 block font-medium text-dark dark:text-white"
@@ -169,8 +169,7 @@ export default function SigninWithPassword() {
             className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
         </div>
-      </div>
-      {message && (
+        {message && (
         <p
           className={`text-sm font-medium mb-5 ${
             message === "Passwords match!" ? "text-green-500" : "text-red-500"
@@ -179,6 +178,8 @@ export default function SigninWithPassword() {
           {message}
         </p>
       )}
+      </div>
+      
 
       <div className="mb-4.5">
         <button
