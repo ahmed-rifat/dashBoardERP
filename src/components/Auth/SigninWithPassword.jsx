@@ -109,7 +109,7 @@ export default function SignupWithPassword() {
           type="submit"
           className="flex w-full text-black bold cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#DBDA00] p-4 font-medium transition hover:bg-opacity-90"
         >
-          Sign Up
+          Sign In
         </button>
       </div>
     </form>

@@ -72,6 +72,8 @@ export default function SigninWithPassword() {
         </div>
       </div>
 
+      
+
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -92,6 +94,56 @@ export default function SigninWithPassword() {
           <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
           <FontAwesomeIcon
             icon={faEnvelope}
+          />
+          </span>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <label
+          htmlFor="mobile-no"
+          className="mb-2.5 block font-medium text-dark dark:text-white"
+        >
+          Mobile No.
+        </label>
+
+        <div className="relative">
+          <input
+            type="mobile-no"
+            placeholder="Enter your mobile no"
+            name="mobile-no"
+            autoComplete="off"
+            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+          />
+
+          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
+          <FontAwesomeIcon
+            icon={faEnvelope}
+          />
+          </span>
+        </div>
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="username"
+          className="mb-2.5 block font-medium text-dark dark:text-white"
+        >
+          Username
+        </label>
+
+        <div className="relative">
+          <input
+            type="username"
+            placeholder="Enter your username"
+            name="username"
+            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 
+            font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+             dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+          />
+
+          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
+          <FontAwesomeIcon
+            icon={faUser}
           />
           </span>
         </div>
@@ -163,7 +215,7 @@ export default function SigninWithPassword() {
           type="submit"
           className="flex w-full text-black bold cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#DBDA00] p-4 font-medium transition hover:bg-opacity-90"
         >
-          Register
+          Sign Up
         </button>
       </div>
     </form>
