@@ -1,7 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash, faEnvelope, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faEnvelope,
+  faUser,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
@@ -17,9 +23,10 @@ export default function SigninWithPassword() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
 
-  const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
-  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword((prevState) => !prevState);
-
+  const togglePasswordVisibility = () =>
+    setShowPassword((prevState) => !prevState);
+  const toggleConfirmPasswordVisibility = () =>
+    setShowConfirmPassword((prevState) => !prevState);
 
   const phoneRegex = /^\+?[0-9\s\-]{7,15}$/;
 
@@ -60,20 +67,45 @@ export default function SigninWithPassword() {
     validatePasswords(password, newConfirmPassword);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isFormValid) {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-      if (error || !phoneRegex.test(phone)) {
-        alert("Please fix errors before submitting.");
-        return;
-      }
-      alert("Form submitted successfully!");
-      // Handle form submission logic here
-    } else {
-      alert("Please fix the errors before submitting.");
-    }
-  };
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name: data.name,
+  //         phone_number: data.phone_number,
+  //         email: data.email,
+  //         email: data.user_name,
+  //         password: data.password,
+  //       }),
+  //     });
+
+  //     const result = await response.json();
+  //     console.log('result', result)
+  //     if (response.ok) {
+  //       alert("Registration successful!");
+  //       // Optionally, you can redirect or clear the form here
+  //       setData({
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         password: "",
+  //         confirmPassword: "",
+  //         remember: false,
+  //       });
+  //     } else {
+  //       alert(`Registration failed: ${result.message}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during registration:", error);
+  //     alert("An error occurred while registering. Please try again.");
+  //   }
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -150,6 +182,30 @@ export default function SigninWithPassword() {
           />
           <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
             <FontAwesomeIcon icon={faEnvelope} />
+          </span>
+        </div>
+      </div>
+
+      {/* User Name Input */}
+      <div className="mb-4">
+        <label
+          htmlFor="user_name"
+          className="mb-2.5 block font-medium text-dark dark:text-white"
+        >
+          User Name
+        </label>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Enter your user name"
+            name="user_name"
+            required
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+          />
+          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
+            <FontAwesomeIcon icon={faUser} />
           </span>
         </div>
       </div>
