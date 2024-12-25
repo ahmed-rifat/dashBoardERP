@@ -29,16 +29,15 @@ const SignUp = () => {
           />
         </Link>
         <p className="mb-3 text-xl font-medium text-dark dark:text-white">
-         Register your account
+          Register your account
         </p>
 
         <h1 className="mb-4 text-2xl font-bold text-dark dark:text-white sm:text-heading-3">
-          Open an Account!
+          Open an <span className="text-primary">Account!</span>
         </h1>
 
         <p className="w-full max-w-[375px] font-medium text-dark-4 dark:text-dark-6">
-          Please Register your account by completing the necessary
-          fields below
+          Please Register your account by completing the necessary fields below
         </p>
 
         {/* <div >
@@ -51,11 +50,9 @@ const SignUp = () => {
           />
         </div> */}
       </div>
-      <div className="w-full border rounded-md drop-shadow-md hover:drop-shadow-xl p-4 sm:p-12.5 xl:p-15">
+      <div className="w-full rounded-md border shadow-2 hover:border-primary p-4 drop-shadow-md hover:drop-shadow-xl sm:p-12.5 xl:p-15">
         <Signup />
       </div>
-
-
     </div>
   );
 };

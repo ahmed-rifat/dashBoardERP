@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash, faEnvelope, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
@@ -16,38 +13,71 @@ export default function SigninWithPassword() {
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
-  };
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prevState) => !prevState);
-  };
+  const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
+  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword((prevState) => !prevState);
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    validatePasswords(e.target.value, confirmPassword);
-  };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-    validatePasswords(password, e.target.value);
+  const phoneRegex = /^\+?[0-9\s\-]{7,15}$/;
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    setPhone(value);
+
+    // Validate the input value
+    if (value === "" || phoneRegex.test(value)) {
+      setError("");
+    } else {
+      setError("Please enter a valid phone number (e.g., +44 20 7946 0958).");
+    }
   };
 
   const validatePasswords = (password, confirmPassword) => {
-    if (password && confirmPassword) {
-      if (password === confirmPassword) {
-        setMessage("Passwords match!");
-      } else {
-        setMessage("Passwords do not match.");
-      }
+    if (password.length < 8) {
+      setMessage("Password must be at least 8 characters.");
+      setIsFormValid(false);
+    } else if (password !== confirmPassword) {
+      setMessage("Passwords do not match.");
+      setIsFormValid(false);
     } else {
-      setMessage("");
+      setMessage("Passwords match!");
+      setIsFormValid(true);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    validatePasswords(newPassword, confirmPassword);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    const newConfirmPassword = e.target.value;
+    setConfirmPassword(newConfirmPassword);
+    validatePasswords(password, newConfirmPassword);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+
+      if (error || !phoneRegex.test(phone)) {
+        alert("Please fix errors before submitting.");
+        return;
+      }
+      alert("Form submitted successfully!");
+      // Handle form submission logic here
+    } else {
+      alert("Please fix the errors before submitting.");
     }
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      {/* Name Input */}
       <div className="mb-4">
         <label
           htmlFor="name"
@@ -55,25 +85,51 @@ export default function SigninWithPassword() {
         >
           Name
         </label>
-
         <div className="relative">
           <input
-            type="name"
+            type="text"
             placeholder="Enter your name"
             name="name"
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+            required
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
-
           <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
-          <FontAwesomeIcon
-            icon={faUser}
-          />
+            <FontAwesomeIcon icon={faUser} />
           </span>
         </div>
       </div>
 
-      
+      {/* Phone Input */}
+      <div className="mb-4">
+        <label
+          htmlFor="phone_number"
+          className="mb-2.5 block font-medium text-dark dark:text-white"
+        >
+          Mobile No.
+        </label>
+        <div className="relative">
+          <input
+            type="tel"
+            pattern="\+?[0-9\s\-]{7,15}"
+            placeholder="Enter your phone no."
+            name="phone_number"
+            required
+            autoComplete="off"
+            onChange={handlePhoneChange}
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+          />
+          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
+            <FontAwesomeIcon icon={faPhone} />
+          </span>
+        </div>
+        {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+      </div>
 
+      {/* Email Input */}
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -81,74 +137,24 @@ export default function SigninWithPassword() {
         >
           Email
         </label>
-
         <div className="relative">
           <input
             type="email"
             placeholder="Enter your email"
             name="email"
+            required
             autoComplete="off"
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
-
           <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
-          <FontAwesomeIcon
-            icon={faEnvelope}
-          />
+            <FontAwesomeIcon icon={faEnvelope} />
           </span>
         </div>
       </div>
 
-      <div className="mb-4">
-        <label
-          htmlFor="mobile-no"
-          className="mb-2.5 block font-medium text-dark dark:text-white"
-        >
-          Mobile No.
-        </label>
-
-        <div className="relative">
-          <input
-            type="mobile-no"
-            placeholder="Enter your mobile no"
-            name="mobile-no"
-            autoComplete="off"
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-          />
-
-          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
-          <FontAwesomeIcon
-            icon={faEnvelope}
-          />
-          </span>
-        </div>
-      </div>
-      <div className="mb-4">
-        <label
-          htmlFor="username"
-          className="mb-2.5 block font-medium text-dark dark:text-white"
-        >
-          Username
-        </label>
-
-        <div className="relative">
-          <input
-            type="username"
-            placeholder="Enter your username"
-            name="username"
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 
-            font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
-             dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
-          />
-
-          <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
-          <FontAwesomeIcon
-            icon={faUser}
-          />
-          </span>
-        </div>
-      </div>
-
+      {/* Password Input */}
       <div className="mb-5">
         <label
           htmlFor="password"
@@ -161,19 +167,23 @@ export default function SigninWithPassword() {
             type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Enter your password"
-            autoComplete="off"
+            required
             value={password}
             onChange={handlePasswordChange}
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
-
-          <span className="absolute right-4.5 top-1/2 -translate-y-1/2"
-              onClick={togglePasswordVisibility}>
-             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+          <span
+            className="absolute right-4.5 top-1/2 -translate-y-1/2 cursor-pointer"
+            onClick={togglePasswordVisibility}
+          >
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </span>
         </div>
       </div>
 
+      {/* Confirm Password Input */}
       <div className="mb-5">
         <label
           htmlFor="confirm-password"
@@ -186,34 +196,39 @@ export default function SigninWithPassword() {
             type={showConfirmPassword ? "text" : "password"}
             name="confirm-password"
             placeholder="Confirm your password"
-            autoComplete="off"
+            required
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
-            className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+            className="w-full rounded-lg border border-stroke bg-[#E8F0FE] py-[15px] pl-6 pr-11 
+              font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none
+              dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
-           <span className="absolute right-4.5 top-1/2 -translate-y-1/2"
-              onClick={toggleConfirmPasswordVisibility}>
-            <FontAwesomeIcon icon={ showConfirmPassword ? faEyeSlash : faEye} />
-
+          <span
+            className="absolute right-4.5 top-1/2 -translate-y-1/2 cursor-pointer"
+            onClick={toggleConfirmPasswordVisibility}
+          >
+            <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
           </span>
         </div>
-        
         {message && (
-        <p
-          className={`text-sm font-medium mb-5 ${
-            message === "Passwords match!" ? "text-green-500" : "text-red-500"
-          }`}
-        >
-          {message}
-        </p>
-      )}
+          <p
+            className={`mt-2 text-sm font-medium ${
+              message === "Passwords match!" ? "text-green-500" : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </div>
-      
 
+      {/* Submit Button */}
       <div className="mb-4.5">
         <button
           type="submit"
-          className="flex w-full text-black bold cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#DBDA00] p-4 font-medium transition hover:bg-opacity-90"
+          disabled={!isFormValid}
+          className={`bold flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-black transition hover:bg-opacity-90 ${
+            !isFormValid ? "cursor-not-allowed opacity-50" : ""
+          }`}
         >
           Sign Up
         </button>

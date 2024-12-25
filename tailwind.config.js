@@ -22,7 +22,7 @@ const config = {
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
-        primary: "#5750F1",
+        primary: "#D9DA02",
         stroke: "#E6EBF1",
         "stroke-dark": "#27303E",
         dark: {

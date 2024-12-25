@@ -1,21 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye,
+  faEyeSlash,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function SignupWithPassword() {
   const [data, setData] = useState({
     remember: false,
   });
-    const [showPassword, setShowPassword] = useState(false);
-    const togglePasswordVisibility = () => {
-      setShowPassword((prevState) => !prevState);
-    };
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Sucessfully Login..");
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -32,9 +40,7 @@ export default function SignupWithPassword() {
           />
 
           <span className="absolute right-4.5 top-1/2 -translate-y-1/2">
-           <FontAwesomeIcon
-                       icon={faEnvelope}
-                     />
+            <FontAwesomeIcon icon={faEnvelope} />
           </span>
         </div>
       </div>
@@ -55,9 +61,11 @@ export default function SignupWithPassword() {
             className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
 
-          <span className="absolute right-4.5 top-1/2 -translate-y-1/2"
-               onClick={togglePasswordVisibility}>
-             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+          <span
+            className="absolute right-4.5 top-1/2 -translate-y-1/2"
+            onClick={togglePasswordVisibility}
+          >
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </span>
         </div>
       </div>
@@ -107,7 +115,7 @@ export default function SignupWithPassword() {
       <div className="mb-4.5">
         <button
           type="submit"
-          className="flex w-full text-black bold cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#DBDA00] p-4 font-medium transition hover:bg-opacity-90"
+          className="bold flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#DBDA00] p-4 font-medium text-white transition hover:bg-opacity-90"
         >
           Sign In
         </button>
